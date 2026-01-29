@@ -79,7 +79,7 @@ pip install -r requirements.txt
 
 ### 📸 Enrollment Demo
 
-![Enrollment Process](attachment:fd509fb6-bdf5-48ea-b114-0a62fa34c527.png)
+![Enrollment Process](assets/enroll.png)
 
 During enrollment, the camera automatically captures multiple valid face frames. These frames are processed using DeepFace to generate embeddings, which are averaged to create a robust facial representation for the user.
 
@@ -104,11 +104,11 @@ python enroll_camera.py
 
 **Successful Authentication**
 
-![Authorized Authentication](attachment:98bec146-ccf8-4920-a92f-d3992b03cd99.png)
+![Authorized Authentication](assets/auth.png)
 
 **Access Denied (No Face / Invalid Match)**
 
-![Access Denied Authentication](attachment:552713e7-a141-4af9-ae9d-80d0e6f79b45.png)
+![Access Denied Authentication](assets/denied.png)
 
 The system performs real-time face authentication using DeepFace embeddings. When a registered user is correctly identified, the system displays the user’s **Name**, **Registration Number**, and **matching distance** on the screen. If no valid face is detected or the embedding distance exceeds the threshold, access is denied.
 
