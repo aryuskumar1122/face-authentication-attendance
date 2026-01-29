@@ -17,15 +17,16 @@ def init_db():
     """)
 
     cur.execute("""
-    CREATE TABLE IF NOT EXISTS attendance (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        reg_no TEXT,
-        name TEXT,
-        date TEXT,
-        time TEXT,
-        status TEXT
-    )
-    """)
+CREATE TABLE IF NOT EXISTS attendance (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    reg_no TEXT,
+    name TEXT,
+    date TEXT,
+    in_time TEXT,
+    out_time TEXT
+)
+""")
+
 
     conn.commit()
     conn.close()
