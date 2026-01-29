@@ -1,20 +1,28 @@
+# ----------------------------
 # Python
+# ----------------------------
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-.env
 env/
 venv/
 
-# OS
+# ----------------------------
+# Data & Privacy
+# ----------------------------
+data/attendance.db
+data/embeddings/
+
+# ----------------------------
+# OS / Editor
+# ----------------------------
 .DS_Store
 Thumbs.db
-
-# Data (DO NOT PUSH REAL DATA)
-data/embeddings/*.npy
-data/attendance.db
-
-# IDE
 .vscode/
-.idea/
+
+# ----------------------------
+# Logs
+# ----------------------------
+*.log
+*.tmp
