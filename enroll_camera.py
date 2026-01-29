@@ -33,11 +33,11 @@ while True:
         rep = DeepFace.represent(
             img_path=frame,
             model_name=MODEL,
-            detector_backend="opencv",  # more stable for webcam
+            detector_backend="opencv",  
             enforce_detection=True
         )
 
-        emb = rep[0]["embedding"]
+        emb = rep[0]["embedding"] # type: ignore
         if emb is not None:
             embeddings.append(emb)
             print(f"Captured valid face: {len(embeddings)}")
@@ -54,12 +54,12 @@ while True:
 cap.release()
 cv2.destroyAllWindows()
 
-# 🔒 SAFETY CHECK
+# SAFETY CHECK
 if len(embeddings) < MIN_VALID_FRAMES:
-    print("❌ Enrollment failed: insufficient valid face frames")
+    print("Enrollment failed: insufficient valid face frames")
     exit()
 
-# ✅ SAVE EMBEDDING (ATOMIC)
+# SAVE EMBEDDING (ATOMIC)
 mean_emb = np.mean(np.array(embeddings), axis=0)
 
 tmp_path = f"{SAVE_DIR}/{reg_no}.tmp.npy"
@@ -68,7 +68,6 @@ final_path = f"{SAVE_DIR}/{reg_no}.npy"
 np.save(tmp_path, mean_emb)
 os.replace(tmp_path, final_path)
 
-# ✅ SAVE METADATA
 conn = get_connection()
 cur = conn.cursor()
 cur.execute(
@@ -78,5 +77,5 @@ cur.execute(
 conn.commit()
 conn.close()
 
-print("✅ Enrollment completed successfully")
+print("Enrollment completed successfully")
 print("Saved embedding shape:", mean_emb.shape)
